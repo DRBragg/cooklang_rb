@@ -1,5 +1,8 @@
 # CooklangRb
 
+[![Gem Version](https://badge.fury.io/rb/cooklang_rb.svg)](https://badge.fury.io/rb/cooklang_rb)
+[![Ruby](https://github.com/DRBragg/cooklang_rb/actions/workflows/main.yml/badge.svg)](https://github.com/DRBragg/cooklang_rb/actions/workflows/main.yml)
+
 A Ruby parser for [Cooklang](https://cooklang.org/).
 
 If you're unfamiliar with [Cooklang](https://cooklang.org/), please visit [https://cooklang.org/](https://cooklang.org/) to learn more about using Cooklang.
