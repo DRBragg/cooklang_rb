@@ -21,9 +21,9 @@ module TagParser
   module ClassMethods
     def parse_from(buffer)
       if buffer.match? multi_word_pattern
-        new **multi_word_pattern.match(buffer.scan(multi_word_pattern)).named_captures.transform_keys(&:to_sym)
+        new(**multi_word_pattern.match(buffer.scan(multi_word_pattern)).named_captures.transform_keys(&:to_sym))
       else
-        new name: buffer.scan(single_word_pattern)
+        new(name: buffer.scan(single_word_pattern))
       end
     end
 
