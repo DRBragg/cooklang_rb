@@ -1,12 +1,8 @@
-require_relative "tag_parser"
-require_relative "steppable"
+require_relative "tag"
 require_relative "with_units"
 
 module CooklangRb
-  class Timer
-    include TagParser
-    include Steppable
-    include QuantityResolver
+  class Timer < Tag
     include WithUnits
 
     attr_reader :name, :quantity, :units
@@ -16,7 +12,7 @@ module CooklangRb
     end
 
     def initialize(name:, quantity: "", units: "")
-      @name = name ? name.delete_prefix(tag).chomp : ""
+      @name = name ? clean_name(name) : ""
       @quantity = resolve_quantity(quantity)
       @units = clean_units(units)
     end

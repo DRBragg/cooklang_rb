@@ -1,13 +1,7 @@
-require_relative "tag_parser"
-require_relative "steppable"
-require_relative "quantity_resolver"
+require_relative "tag"
 
 module CooklangRb
-  class Cookware
-    include TagParser
-    include Steppable
-    include QuantityResolver
-
+  class Cookware < Tag
     attr_reader :name, :quantity
 
     def self.tag
@@ -15,7 +9,7 @@ module CooklangRb
     end
 
     def initialize(name:, quantity:  1)
-      @name = name.delete_prefix(tag).chomp
+      @name = clean_name(name)
       @quantity = resolve_quantity(quantity, default: 1)
     end
   end
