@@ -1,10 +1,12 @@
 require_relative "tag_parser"
 require_relative "steppable"
+require_relative "quantity_resolver"
 
 module CooklangRb
   class Ingredient
     include TagParser
     include Steppable
+    include QuantityResolver
 
     attr_reader :name, :quantity, :units
 
@@ -14,26 +16,8 @@ module CooklangRb
 
     def initialize(name:, quantity: "some", units: "")
       @name = name.delete_prefix(tag).chomp
-      @quantity = normalize quantity
+      @quantity = resolve_quantity(quantity, default: "some")
       @units = units&.strip || ""
-    end
-
-    private
-
-    def normalize(value)
-      return "some" if value.nil? || value.strip.empty?
-
-      value.strip! if value.respond_to?(:strip!)
-
-      if value.include?(".")
-        value.to_f
-      elsif value.include?("/") && value[0] != "0"
-        value.gsub(/\s/, "").to_r.to_f
-      elsif value.match? /^[0-9]+$/
-        value.to_i
-      else
-        value
-      end
     end
   end
 end
