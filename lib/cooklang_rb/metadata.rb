@@ -21,8 +21,9 @@ module CooklangRb
     private
 
     def add_metadata
-      data = PATTERN.match(@buffer.scan(PATTERN)).named_captures
-      @metadata[data["key"].strip] = data["value"]
+      @buffer.scan(PATTERN)
+      key, value = @buffer.captures.map(&:strip)
+      @metadata[key] = value
     end
   end
 end
