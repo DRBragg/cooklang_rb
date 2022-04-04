@@ -14,10 +14,6 @@ module CooklangRb
       COOKWARE_TAG
     end
 
-    def self.multi_word_pattern
-      /#{tag}#{MULTI_NAME}{#{QUANTITY}}/
-    end
-
     def initialize(name:, quantity:  1)
       @name = name.delete_prefix(tag).chomp
       @quantity = resolve_quantity(quantity, default: 1)

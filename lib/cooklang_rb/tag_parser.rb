@@ -28,7 +28,7 @@ module TagParser
     end
 
     def multi_word_pattern
-      /#{tag}#{MULTI_NAME}?{#{QUANTITY}%?#{UNITS}}/
+      /#{tag}#{MULTI_NAME}{#{QUANTITY}}/
     end
 
     def single_word_pattern
