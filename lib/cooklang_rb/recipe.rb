@@ -1,13 +1,13 @@
 require "strscan"
 
-require_relative "ingredient"
-require_relative "cookware"
-require_relative "timer"
-require_relative "text"
 require_relative "metadata"
+require_relative "step"
+require_relative "buffer_utils"
 
 module CooklangRb
   class Recipe
+    include BufferUtils
+
     attr_reader :metadata, :steps
 
     def self.from(source)
@@ -37,7 +37,7 @@ module CooklangRb
 
       gather_metadata
 
-      until @buffer.eos?
+      until end_of_buffer?
         parse_data
       end
     end
@@ -48,7 +48,7 @@ module CooklangRb
     end
 
     def parse_data
-      if @buffer.peek(1) == "\n"
+      if end_of_line?
         @buffer.getch
         return
       end
@@ -57,26 +57,7 @@ module CooklangRb
     end
 
     def build_step
-      step = []
-
-      until @buffer.peek(1) == "\n" || @buffer.eos?
-        step << take_step
-      end
-
-      step
-    end
-
-    def take_step
-      case @buffer.peek(1)
-      when "@"
-        Ingredient.parse_from(@buffer).to_step
-      when "#"
-        Cookware.parse_from(@buffer).to_step
-      when "~"
-        Timer.parse_from(@buffer).to_step
-      else
-        Text.parse_from(@buffer).to_step
-      end
+      Step.new(@buffer).build
     end
 
     def gather_metadata
