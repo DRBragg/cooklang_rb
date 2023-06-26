@@ -580,5 +580,3 @@ tests:
             units: "minutes"
             name: "potato"
       metadata: {}
-
-# TODO add common syntax errors
