@@ -46,7 +46,8 @@ module CooklangRb
 
     def remove_comments
       @source.gsub!(/\[-.*-\]/, "")
-      @source.gsub!(/--.*\n/, "\n")
+      @source.gsub!(/^[[:blank:]]*--.*\n/, "")
+      @source.gsub!(/--.*\n/, " ")
     end
 
     def parse_data
