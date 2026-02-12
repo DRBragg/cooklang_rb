@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module WithUnits
   def self.included(base)
     base.include InstanceMethods

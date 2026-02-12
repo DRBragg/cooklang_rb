@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BufferUtils
   def end_of_line?
     @buffer.peek(1) == "\n"

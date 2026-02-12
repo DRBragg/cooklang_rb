@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module CooklangRb
   class Metadata
-    TAG = ">>".freeze
+    TAG = ">>"
     PATTERN = /^#{TAG}\s*(?<key>.+?):\s*(?<value>.+)\n/
 
     def initialize(buffer)

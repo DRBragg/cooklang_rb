@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "tag"
 
 module CooklangRb
@@ -8,7 +10,7 @@ module CooklangRb
       COOKWARE_TAG
     end
 
-    def initialize(name:, quantity:  1)
+    def initialize(name:, quantity: 1)
       @name = clean_name(name)
       @quantity = resolve_quantity(quantity, default: 1)
     end

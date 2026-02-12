@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module TagParser
-  NAME = "(?<name>[^\s]+)".freeze
-  MULTI_NAME = "(?<name>[^@#~{]+)".freeze
-  QUANTITY = "(?<quantity>[^%}]*)?".freeze
-  UNITS = "(?<units>[^}]+)?".freeze
-  TIMER_TAG = "~".freeze
-  INGREDIENT_TAG = "@".freeze
-  COOKWARE_TAG = "#".freeze
+  NAME = "(?<name>[^\s]+)"
+  MULTI_NAME = "(?<name>[^@#~{]+)"
+  QUANTITY = "(?<quantity>[^%}]*)?"
+  UNITS = "(?<units>[^}]+)?"
+  TIMER_TAG = "~"
+  INGREDIENT_TAG = "@"
+  COOKWARE_TAG = "#"
 
   def self.included(base)
     base.include InstanceMethods

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Steppable
   def self.included(base)
     base.include InstanceMethods
@@ -6,7 +8,7 @@ module Steppable
 
   module InstanceMethods
     def to_step
-      data = { "type" => type }
+      data = {"type" => type}
       attributes.each do |key|
         data[key.to_s] = send key
       end
@@ -26,7 +28,7 @@ module Steppable
     def attr_reader(*vars)
       @attributes ||= []
       @attributes.concat vars
-      super(*vars)
+      super
     end
 
     def attributes

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "strscan"
 
 require_relative "metadata"
@@ -15,7 +17,7 @@ module CooklangRb
     end
 
     def initialize(source)
-      @source = source
+      @source = source.dup
       @steps = []
       @metadata = {}
       parse

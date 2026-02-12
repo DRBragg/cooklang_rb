@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "ingredient"
 require_relative "cookware"
 require_relative "timer"

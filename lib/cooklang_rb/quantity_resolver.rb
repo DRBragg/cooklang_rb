@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module QuantityResolver
   def resolve_quantity(quantity, default: "")
     return default if quantity.nil?
     return quantity if quantity.is_a? Numeric
 
-    quantity.strip! if quantity.respond_to?(:strip!)
+    quantity = quantity.strip if quantity.respond_to?(:strip)
 
     if quantity.include?(".")
       quantity.to_f

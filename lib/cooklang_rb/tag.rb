@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "tag_parser"
 require_relative "steppable"
 require_relative "quantity_resolver"
