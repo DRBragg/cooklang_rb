@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module TagParser
-  NAME = "(?<name>[^\s]+)"
+  NAME = "(?<name>[^\\t\\n\\r\\f\\v\\p{Zs}\\p{P}]+)"
   MULTI_NAME = "(?<name>[^@#~{]+)"
   QUANTITY = "(?<quantity>[^%}]*)?"
   UNITS = "(?<units>[^}]+)?"
