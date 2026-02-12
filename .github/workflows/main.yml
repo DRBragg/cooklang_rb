@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: ['2.5', '2.6', '2.7', '3.0']
+        ruby: ['3.3', '3.4', '4.0']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -22,6 +22,6 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - name: Run the default task
       run: |
-        gem install bundler -v 2.2.3
+        gem install bundler
         bundle install
         bundle exec rake

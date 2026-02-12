@@ -6,16 +6,22 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.15.0)
-    rake (13.0.6)
+    minitest (5.27.0)
+    rake (13.3.1)
 
 PLATFORMS
-  x86_64-darwin-20
+  arm64-darwin-25
+  ruby
 
 DEPENDENCIES
   cooklang_rb!
   minitest (~> 5.0)
   rake (~> 13.0)
 
+CHECKSUMS
+  cooklang_rb (0.2.0)
+  minitest (5.27.0) sha256=2d3b17f8a36fe7801c1adcffdbc38233b938eb0b4966e97a6739055a45fa77d5
+  rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
+
 BUNDLED WITH
-   2.2.3
+  4.0.6
