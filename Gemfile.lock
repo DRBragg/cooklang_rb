@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cooklang_rb (0.2.0)
+    cooklang_rb (1.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -19,7 +19,7 @@ DEPENDENCIES
   rake (~> 13.0)
 
 CHECKSUMS
-  cooklang_rb (0.2.0)
+  cooklang_rb (1.0.0)
   minitest (5.27.0) sha256=2d3b17f8a36fe7801c1adcffdbc38233b938eb0b4966e97a6739055a45fa77d5
   rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
 
