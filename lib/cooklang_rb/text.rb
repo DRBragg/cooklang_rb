@@ -8,12 +8,19 @@ module CooklangRb
 
     attr_reader :value
 
-    TAGS = /[@#~]|\n/
+    TAG_BOUNDARY = /[@#~](?=[^\p{Zs}\s])|\n/
 
     def self.parse_from(buffer)
-      text = buffer.scan_until TAGS
-      text = text&.sub(TAGS, "") || buffer.rest
-      buffer.pos = buffer.pos - 1 unless buffer.eos?
+      text = buffer.scan_until TAG_BOUNDARY
+
+      if text
+        text = text.chop
+        buffer.pos -= 1 unless buffer.eos?
+      else
+        text = buffer.rest
+        buffer.terminate
+      end
+
       new text.chomp
     end
 
