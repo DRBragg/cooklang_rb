@@ -33,11 +33,10 @@ module CooklangRb
     private
 
     def parse
+      gather_metadata
       remove_comments
 
       @buffer = StringScanner.new(@source)
-
-      gather_metadata
 
       until end_of_buffer?
         parse_data
@@ -46,8 +45,8 @@ module CooklangRb
 
     def remove_comments
       @source.gsub!(/\[-.*-\]/, "")
-      @source.gsub!(/^[[:blank:]]*--.*\n/, "")
-      @source.gsub!(/--.*\n/, " ")
+      @source.gsub!(/^[[:blank:]]*(?<!-)--(?!-).*\n/, "")
+      @source.gsub!(/(?<!-)--(?!-).*\n/, " ")
     end
 
     def parse_data
@@ -64,7 +63,7 @@ module CooklangRb
     end
 
     def gather_metadata
-      @metadata = Metadata.new(@buffer).parse
+      @metadata, @source = Metadata.new(@source).parse
     end
   end
 end
